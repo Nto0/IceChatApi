@@ -27,7 +27,6 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Authentication;
@@ -137,8 +136,6 @@ namespace IceChat
         public event ServerForceDisconnectDelegate ServerFullyConnected;
 
         private bool initialLogon = false;
-
-        public Form UserInfoWindow = null;
 
         private void ParseData(string data)
         {

@@ -37,8 +37,11 @@ namespace IceChat
         private TcpListener identServer;
         private Thread identThread;
 
-        public IdentServer()
+        IIdentNameProvider NameProvider;
+
+        public IdentServer(IIdentNameProvider nameProvider)
         {
+            this.NameProvider = nameProvider ?? throw new ArgumentNullException(nameof(nameProvider));
             identThread = new Thread(new ThreadStart(Listen))
             {
                 Name = "IdentServerThread"
@@ -117,7 +120,7 @@ namespace IceChat
                     {
                         string[] ident = msg.Split(',');
                         string sendIdent = ident[0].Trim() + ", " + ident[1].Trim();
-                        sendIdent += " : USERID : UNIX : " + FormMain.Instance.InputPanel.CurrentConnection.ServerSetting.IdentName;
+                        sendIdent += " : USERID : UNIX : " + NameProvider.IdentName;
                         byte[] buffer = encoder.GetBytes(sendIdent + "\n");
 
                         clientStream.Write(buffer, 0, buffer.Length);
@@ -155,4 +158,10 @@ namespace IceChat
             }
         }
     }
+
+    public interface IIdentNameProvider
+    {
+        string IdentName { get; }
+    }
+
 }

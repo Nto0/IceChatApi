@@ -23,7 +23,6 @@
 \******************************************************************************/
 
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -43,14 +42,14 @@ namespace IceChatPlugin
         public abstract string Author { get; }
 
         //sets the MainForm for IceChat
-        public Form MainForm { get; set; }
+        //public Form MainForm { get; set; }
         public string CurrentFolder { get; set; }
         public string FileName { get; set; }
 
-        public virtual void ShowInfo()
-        {
-            MessageBox.Show(Name + " Loaded", Name + " " + Author);
-        }
+        //public virtual void ShowInfo()
+        //{
+        //    MessageBox.Show(Name + " Loaded", Name + " " + Author);
+        //}
 
         public AppDomain Domain { get; set; }
         
@@ -59,29 +58,29 @@ namespace IceChatPlugin
         public bool Unloaded { get; set; }
 
         //the mainform menu
-        public MenuStrip MainMenuStrip { get; set; }
-        //the bottom panel of the main window
-        public Panel BottomPanel { get; set; }
+        //public MenuStrip MainMenuStrip { get; set; }
+        ////the bottom panel of the main window
+        //public Panel BottomPanel { get; set; }
         
-        public TabControl LeftPanel { get; set; }
-        public TabControl RightPanel { get; set; }
+        //public TabControl LeftPanel { get; set; }
+        //public TabControl RightPanel { get; set; }
         public double CurrentVersion { get; set; }
 
 
-        public virtual bool HaveSettingsForm() { return false; }
-        public virtual void ShowSettingsForm() { }
+        //public virtual bool HaveSettingsForm() { return false; }
+        //public virtual void ShowSettingsForm() { }
 
-        public virtual void LoadSettingsForm(System.Windows.Forms.TabControl SettingsTab) { }
-        public virtual void LoadColorsForm(System.Windows.Forms.TabControl ColorsTab) { }
-        public virtual void LoadEditorForm(System.Windows.Forms.TabControl ScriptsTab, System.Windows.Forms.MenuStrip MainMenu) { }
-        public virtual void SaveColorsForm() { }
-        public virtual void SaveSettingsForm() { }
-        public virtual void SaveEditorForm() { }
+        //public virtual void LoadSettingsForm(System.Windows.Forms.TabControl SettingsTab) { }
+        //public virtual void LoadColorsForm(System.Windows.Forms.TabControl ColorsTab) { }
+        //public virtual void LoadEditorForm(System.Windows.Forms.TabControl ScriptsTab, System.Windows.Forms.MenuStrip MainMenu) { }
+        //public virtual void SaveColorsForm() { }
+        //public virtual void SaveSettingsForm() { }
+        //public virtual void SaveEditorForm() { }
 
-        public virtual ToolStripItem[] AddChannelPopups() { return null; }
-        public virtual ToolStripItem[] AddQueryPopups() { return null; }
-        public virtual ToolStripItem[] AddServerPopups() { return null; }
-        public virtual Panel[] AddMainPanel() { return null; }
+        //public virtual ToolStripItem[] AddChannelPopups() { return null; }
+        //public virtual ToolStripItem[] AddQueryPopups() { return null; }
+        //public virtual ToolStripItem[] AddServerPopups() { return null; }
+        //public virtual Panel[] AddMainPanel() { return null; }
 
         public IceChat.IRCConnection ServerTreeCurrentConnection { get; set; }
         //public IceChat.IceChatServers Connections { get; set; }
@@ -128,7 +127,7 @@ namespace IceChatPlugin
 
         public virtual PluginArgs ChannelInvite(PluginArgs args) { return args; }
 
-        public virtual ToolStripMenuItem MenuItemShow(ToolStripMenuItem menu) { return menu; }
+        //public virtual ToolStripMenuItem MenuItemShow(ToolStripMenuItem menu) { return menu; }
         
         public virtual void DCCFileStart(PluginArgs args) { }
         public virtual void DCCFileResume(PluginArgs args) { }
@@ -153,8 +152,8 @@ namespace IceChatPlugin
         public virtual void ChannelNames(PluginArgs args) { }
         public virtual void EndChannelNames(PluginArgs args) { }
 
-        // when a hotkey is pressed
-        public virtual PluginArgs HotKey(PluginArgs args, KeyEventArgs e) { return args; }
+        //// when a hotkey is pressed
+        //public virtual PluginArgs HotKey(PluginArgs args, KeyEventArgs e) { return args; }
         
         // when we have switched to a new tab
         public virtual void SwitchTab(PluginArgs args) { }
@@ -176,7 +175,7 @@ namespace IceChatPlugin
         public string Host;
         public string Channel;
         public string Extra;
-        public Form Form;           
+        //public Form Form;           
         public Object TextWindow;
         public IceChat.IRCConnection Connection;
         public uint fileSize;
@@ -208,10 +207,10 @@ namespace IceChatPlugin
             this.TextWindow = textwindow;
         }
 
-        public PluginArgs(Form form)
-        {
-            this.Form = form;    
-        }
+        //public PluginArgs(Form form)
+        //{
+        //    this.Form = form;    
+        //}
 
         public PluginArgs(IceChat.IRCConnection connection)
         {

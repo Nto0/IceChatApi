@@ -28,7 +28,6 @@ using System.Text;
 using System.Reflection;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
 namespace System.Runtime.CompilerServices
@@ -70,49 +69,6 @@ namespace IceChat
 
         public static Regex ParseAllCodes = new Regex(ParseBackColor + "|" + ParseForeColor + "|" + ParseColorChar + "|" + ParseBoldChar + "|" + ParseUnderlineChar + "|" + ParseReverseChar + "|" + ParseItalicChar + "|" + ParseCancelChar);
 
-        /// <summary>
-        /// Load in embedded resources from Stream and add it to the sent object's Image Property
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="resourceName"></param>
-        public static void LoadResourceImage(object sender, string resourceName)
-        {
-            Assembly a = Assembly.GetExecutingAssembly();
-            Stream s = a.GetManifestResourceStream("IceChat.Icons." + resourceName);
-            
-            if (s == null)
-                return;
-
-            Bitmap b;
-            if (resourceName.EndsWith("ico"))
-                b = new Icon(s).ToBitmap();
-            else
-                b = new Bitmap(s);
-
-            if (sender.GetType() == typeof(Button))
-                ((Button)sender).Image = b;
-            else if (sender.GetType() == typeof(ToolStripMenuItem))
-                ((ToolStripMenuItem)sender).Image = b;
-
-        }
-        
-        /// <summary>
-        /// Load in embedded resources from Stream
-        /// </summary>
-        /// <param name="resourceName">The resource name of the Image</param>
-        public static Bitmap LoadResourceImage(string resourceName)
-        {
-            Assembly a = Assembly.GetExecutingAssembly();
-            Stream s = a.GetManifestResourceStream("IceChat.Icons." + resourceName);
-            
-            if (s == null)
-                return null;
-            
-            if (resourceName.EndsWith("ico"))
-                return new Icon(s).ToBitmap();
-
-            return new Bitmap(s);
-        }
         
         /// <summary>
         /// Check if we are running in the Mono runtime or not
@@ -120,16 +76,6 @@ namespace IceChat
         static public bool IsRunningOnMono()
         {
             return Type.GetType("Mono.Runtime") != null;
-        }
-
-        static public void UIThread(this Control control, MethodInvoker code)
-        {
-            if (control.InvokeRequired)
-            {
-                control.BeginInvoke(code);
-                return;
-            }
-            code.Invoke();
         }
         
         /* 

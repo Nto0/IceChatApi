@@ -1,8 +1,8 @@
-# IceChat
+# IceChatApi
 
-## IceChat IRC Client v9
+## IceChat IRC API
 
-IceChat is an open source IRC Client written in C# using WinForms.
+IceChatApi is an open source IRC API written in C#.
 
 It has been fully released, but always undergoing development and improvements.
 
