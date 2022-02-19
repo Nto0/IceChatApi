@@ -31,7 +31,7 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Authentication;
 
-namespace IceChat
+namespace IceChatApi
 {
     public partial class IRCConnection : IDisposable
     {

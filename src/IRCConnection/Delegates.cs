@@ -24,7 +24,7 @@
 
 using System;
 
-namespace IceChat
+namespace IceChatApi
 {
     public delegate void OutGoingCommandDelegate(IRCConnection connection, string data);
     public delegate void RawServerIncomingDataDelegate(IRCConnection connection, string data);

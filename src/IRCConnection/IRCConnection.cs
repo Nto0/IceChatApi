@@ -33,7 +33,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Security.Authentication;
 
-namespace IceChat
+namespace IceChatApi
 {
     public partial class IRCConnection : IDisposable
     {

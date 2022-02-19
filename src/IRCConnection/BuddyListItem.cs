@@ -27,7 +27,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace IceChat
+namespace IceChatApi
 {
     public class BuddyListItem
     {

@@ -27,7 +27,7 @@ using System.Collections.Generic;
 using System.Collections;
 
 
-namespace IceChatPlugin
+namespace IceChatApi
 {  
 
     public delegate void OutGoingCommandHandler(PluginArgs e);

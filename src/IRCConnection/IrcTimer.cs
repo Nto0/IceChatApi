@@ -24,7 +24,7 @@
 
 using System;
 
-namespace IceChat
+namespace IceChatApi
 {
     public class IrcTimer : System.Timers.Timer
     {
