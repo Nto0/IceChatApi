@@ -33,12 +33,7 @@ namespace IceChat
         private string nickName;
         private IRCConnection connection = null;
         
-        public bool[] Level;
-        public int nickColor = -1;
-        public bool Selected;
-        public bool Away;
-
-        public bool CustomColor = false;
+        bool[] Level;
 
         public User(string nick, IRCConnection connection)
         {

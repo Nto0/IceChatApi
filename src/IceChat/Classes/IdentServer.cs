@@ -44,7 +44,8 @@ namespace IceChat
             this.NameProvider = nameProvider ?? throw new ArgumentNullException(nameof(nameProvider));
             identThread = new Thread(new ThreadStart(Listen))
             {
-                Name = "IdentServerThread"
+                Name = "IdentServerThread",
+                IsBackground = true,
             };
             identThread.Start();
         }
@@ -61,7 +62,8 @@ namespace IceChat
                     TcpClient client = identServer.AcceptTcpClient();
                     Thread clientThread = new Thread(new ParameterizedThreadStart(IncomingData))
                     {
-                        Name = "IdentClientThread"
+                        Name = "IdentClientThread",
+                        IsBackground = true,
                     };
                     clientThread.Start(client);
                 }
@@ -110,8 +112,7 @@ namespace IceChat
                 }
 
                 //message has successfully been received
-                ASCIIEncoding encoder = new ASCIIEncoding();
-                string msg = encoder.GetString(message, 0, bytesRead);
+                string msg = System.Text.Encoding.ASCII.GetString(message, 0, bytesRead);
                 //System.Diagnostics.Debug.WriteLine("IdentMSG: " + msg);
 
                 if (msg.Contains(","))
@@ -121,7 +122,7 @@ namespace IceChat
                         string[] ident = msg.Split(',');
                         string sendIdent = ident[0].Trim() + ", " + ident[1].Trim();
                         sendIdent += " : USERID : UNIX : " + NameProvider.IdentName;
-                        byte[] buffer = encoder.GetBytes(sendIdent + "\n");
+                        byte[] buffer = System.Text.Encoding.ASCII.GetBytes(sendIdent + "\n");
 
                         clientStream.Write(buffer, 0, buffer.Length);
                         clientStream.Flush();
