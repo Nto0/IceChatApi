@@ -250,7 +250,7 @@ namespace IceChatApi
                     {
                         if (ison.Length > 200)
                             break;
-                        else if (!buddy.IsOnSent)
+                        if (!buddy.IsOnSent)
                         {
                             if (!buddy.Nick.StartsWith(";"))
                             {
@@ -265,11 +265,7 @@ namespace IceChatApi
                     }
 
                     if (ison != string.Empty)
-                    {
-                        ison = "ISON" + ison;
-
-                        SendData(ison);
-                    }
+                        SendData("ISON" + ison);
                     else
                         BuddyListClear(this);
 
