@@ -82,7 +82,7 @@ namespace IceChatApi
         //public virtual ToolStripItem[] AddServerPopups() { return null; }
         //public virtual Panel[] AddMainPanel() { return null; }
 
-        public IceChat.IRCConnection ServerTreeCurrentConnection { get; set; }
+        public IRCConnection ServerTreeCurrentConnection { get; set; }
         //public IceChat.IceChatServers Connections { get; set; }
         public string ServerTreeCurrentTab { get; set; }
 
@@ -177,7 +177,7 @@ namespace IceChatApi
         public string Extra;
         //public Form Form;           
         public Object TextWindow;
-        public IceChat.IRCConnection Connection;
+        public IRCConnection Connection;
         public uint fileSize;
         public uint filePos;
         public string fileName;
@@ -212,7 +212,7 @@ namespace IceChatApi
         //    this.Form = form;    
         //}
 
-        public PluginArgs(IceChat.IRCConnection connection)
+        public PluginArgs(IRCConnection connection)
         {
             this.Connection = connection;
         }
